@@ -180,6 +180,7 @@ def morph(image, itr, mode):
     cv2.destroyAllWindows()
 
 
+
 def main():
     import sys
         merge2images(sys.argv[1], sys.argv[2])
