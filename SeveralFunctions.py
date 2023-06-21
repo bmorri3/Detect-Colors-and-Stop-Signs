@@ -182,7 +182,7 @@ def morph(image, itr, mode):
 
 def main():
     import sys
-    #    merge2images(sys.argv[1], sys.argv[2])
+        merge2images(sys.argv[1], sys.argv[2])
     #    rotateimage(sys.argv[1], int(sys.argv[2]))   #filename and angle
     #    sampleupdown(sys.argv[1], int(sys.argv[2]))
     # histogram(sys.argv[1])
