@@ -1,3 +1,7 @@
+"""
+The original file created by Dr. Rachana Gupta
+"""
+
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -10,8 +14,8 @@ def readimage(image):
     #    img = cv2.imread(fileinput, 2)
     print("Dimension:{}, Size:{}, dtype:{} ".format(img.shape, img.size, img.dtype))
 
-    cv2.namedWindow('image', cv2.WINDOW_NORMAL)
-    cv2.imshow('image', img)
+    cv2.namedWindow('Display', cv2.WINDOW_NORMAL)
+    cv2.imshow('Display', img)
     print("Enter s to save and esc to exit")
     k = cv2.waitKey(0)
     if k == 27:
@@ -23,6 +27,7 @@ def readimage(image):
         print("Enter esc to escape and s to save.. closing image")
     cv2.destroyAllWindows()
     plt.imshow(img)
+    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     plt.show()
 
 
@@ -35,7 +40,7 @@ def usematplot():
 
 
 def drawline():
-    """ drawig a line on an image"""
+    """ drawing a line on an image"""
 
     # Create a black image
     img = np.zeros((512, 512, 3), np.uint8)
@@ -45,8 +50,12 @@ def drawline():
     img = cv2.rectangle(img, (384, 0), (510, 128), (0, 255, 0), 3)
     img = cv2.circle(img, (447, 63), 63, (0, 0, 255), -1)
     img = cv2.ellipse(img, (256, 256), (100, 50), 0, 0, 180, 255, -1)
+    # Below creates a polygon
+    # Create vertices
     pts = np.array([[10, 5], [20, 30], [70, 20], [50, 10]], np.int32)
+    # Not sure that this does
     pts = pts.reshape((-1, 1, 2))
+    # Connect the vertices
     img = cv2.polylines(img, [pts], False, (0, 255, 255))
     print(pts)
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -58,8 +67,8 @@ def drawline():
 
 
 def blendimage():
-    img1 = cv2.imread('ml..jpg')
-    img2 = cv2.imread('opencv.jpg')
+    img1 = cv2.imread('Hawkes_Bay_NZ.jpg')
+    img2 = cv2.imread('Hawkes_Bay_NZ.jpg')
 
     dst = cv2.addWeighted(img1, 0.3, img2, 0.7, 0)
 
@@ -183,7 +192,13 @@ def morph(image, itr, mode):
 
 def main():
     import sys
-        merge2images(sys.argv[1], sys.argv[2])
+
+    image = 'Monalisa.jpg'
+    #readimage(image)
+    #drawline()
+    #blendimage()
+    merge2images('Monalisa.jpg', 'Blueball.jpg')
+    #merge2images(sys.argv[1], sys.argv[2])
     #    rotateimage(sys.argv[1], int(sys.argv[2]))   #filename and angle
     #    sampleupdown(sys.argv[1], int(sys.argv[2]))
     # histogram(sys.argv[1])
